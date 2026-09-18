@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cue Labs</title>
+  <meta name="description" content="Cue Labs builds software for DJs. We make Cueport." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <span class="wordmark">Cue Labs</span>
+    </header>
+
+    <section class="hero">
+      <p class="tagline">We make <a href="https://usecueport.com" target="_blank" rel="noopener">Cueport</a>.</p>
+      <p class="description">
+        Cueport is a metadata tool for DJs. It reads your Serato library and
+        gives you fast, accurate analysis of every track: BPM, key, waveform,
+        and cue points, all in one place.
+      </p>
+    </section>
+
+    <footer>
+      <p>
+        &copy; <span id="year"></span> Cue Labs &middot;
+        <a href="https://usecueport.com" target="_blank" rel="noopener">usecueport.com</a>
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

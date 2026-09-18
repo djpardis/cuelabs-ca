@@ -1,0 +1,104 @@
+/* Cue Labs — matches the Cueport brand palette. */
+:root {
+  --bg:              #f5ede0;
+  --text:            #18181b;
+  --text-secondary:  #52525b;
+  --accent:          #c2410c;
+  --accent-hover:    #9a3412;
+  --border:          #e0d4c4;
+
+  --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Header */
+header {
+  padding: 48px 0 0;
+}
+
+.wordmark {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* Hero */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 0 48px;
+}
+
+.tagline {
+  margin: 0 0 24px;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.tagline a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.tagline a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.description {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  max-width: 480px;
+}
+
+/* Footer */
+footer {
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+footer p { margin: 0; }
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
