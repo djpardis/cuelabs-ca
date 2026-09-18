@@ -1,0 +1,14 @@
+{
+  "name": "cuelabs-ca",
+  "version": "0.0.1",
+  "private": true,
+  "description": "cuelabs.ca — home of Cue Labs, makers of Cueport.",
+  "scripts": {
+    "start": "eleventy --serve --port=8091",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

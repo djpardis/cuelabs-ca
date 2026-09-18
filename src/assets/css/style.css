@@ -1,22 +1,19 @@
 /* Cue Labs — matches the Cueport brand palette. */
 :root {
-  --bg:              #f5ede0;
-  --text:            #18181b;
-  --text-secondary:  #52525b;
-  --accent:          #c2410c;
-  --accent-hover:    #9a3412;
-  --border:          #e0d4c4;
+  --bg:             #f5ede0;
+  --text:           #18181b;
+  --text-secondary: #52525b;
+  --accent:         #c2410c;
+  --accent-hover:   #9a3412;
+  --border:         #e0d4c4;
 
   --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --maxw: 1080px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-
-html, body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-}
+html, body { margin: 0; padding: 0; }
 
 body {
   font-family: var(--font-sans);
@@ -25,45 +22,61 @@ body {
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
-}
-
-main {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
-  max-width: 640px;
+}
+
+#main { flex: 1; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+img, svg { display: block; max-width: 100%; }
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 32px;
 }
 
 /* Header */
-header {
-  padding: 48px 0 0;
+.site-header {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
 }
 
-.wordmark {
+.header-inner {
+  display: flex;
+  align-items: center;
+}
+
+.logo-lockup {
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-title {
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: var(--text-secondary);
   text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 /* Hero */
 .hero {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 80px 0 48px;
+  padding: 96px 0 80px;
 }
 
 .tagline {
-  margin: 0 0 24px;
+  margin: 0 0 28px;
   font-size: clamp(2rem, 5vw, 2.75rem);
   font-weight: 300;
   line-height: 1.2;
   color: var(--text);
+  max-width: 640px;
 }
 
 .tagline a {
@@ -84,21 +97,13 @@ header {
 }
 
 /* Footer */
-footer {
+.site-footer {
   padding: 32px 0 40px;
   border-top: 1px solid var(--border);
+}
+
+.footer-copyright {
+  margin: 0;
   font-size: 0.875rem;
   color: var(--text-secondary);
-}
-
-footer p { margin: 0; }
-
-footer a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
 }
