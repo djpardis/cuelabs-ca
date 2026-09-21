@@ -2,7 +2,7 @@
   "name": "Cue Labs",
   "domain": "cuelabs.ca",
   "url": "https://cuelabs.ca",
-  "description": "Cue Labs builds software for DJs. We make Cueport.",
+  "description": "Cue Labs builds stuff for DJs, including Cueport.",
   "forms": {
     "subscribe": {
       "apiUrl": "https://form.cuelabs.ca"
