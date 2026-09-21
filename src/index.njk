@@ -2,13 +2,84 @@
 layout: layouts/base.njk
 ---
 
-<section class="hero">
-  <div class="container">
-    <p class="tagline">We make <a href="https://usecueport.com" target="_blank" rel="noopener">Cueport</a>.</p>
-    <p class="description">
-      Cueport is a metadata tool for DJs. It reads your Serato library and
-      gives you fast, accurate analysis of every track: BPM, key, waveform,
-      and cue points, all in one place.
-    </p>
+<div class="container main-inner">
+
+  <div class="left-col">
+    <h1 class="hero-headline">We build<br>stuff for<br><strong>DJs</strong>.</h1>
   </div>
-</section>
+
+  <div class="right-col">
+
+    <div class="section">
+      <p class="col-label">Our catalog</p>
+      <a class="product-link" href="https://usecueport.com" target="_blank" rel="noopener">Cueport &rarr;</a>
+      <span class="product-upcoming">More soon</span>
+    </div>
+
+    <div class="section">
+      <p class="col-label">Get in touch</p>
+      <a class="contact-email" href="mailto:hello@cuelabs.ca">hello@cuelabs.ca</a>
+    </div>
+
+    <div class="section">
+      <p class="col-label">Stay up-to-date</p>
+      <form class="signup-form" id="signup" novalidate>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="your@email.com" required />
+        <div class="hp" aria-hidden="true">
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <button type="submit">Get updates &rarr;</button>
+      </form>
+      <p id="signup-msg" class="signup-msg" role="status" aria-live="polite"></p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const FORM_API = "{{ site.forms.subscribe.apiUrl }}";
+  const form = document.getElementById("signup");
+  const msg  = document.getElementById("signup-msg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (form.website && form.website.value) return;
+    const btn = form.querySelector("button[type=submit]");
+    btn.disabled = true;
+    msg.className = "signup-msg";
+    msg.textContent = "";
+
+    let res;
+    try {
+      res = await fetch(`${FORM_API}/api/subscribe`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: form.email.value.trim(), source: "cuelabs-homepage" }),
+      });
+    } catch {
+      msg.className = "signup-msg error";
+      msg.textContent = "Something went wrong. Try again.";
+      btn.disabled = false;
+      return;
+    }
+
+    const body = await res.json().catch(() => ({}));
+
+    if (res.ok) {
+      msg.className = "signup-msg success";
+      msg.textContent = "Check your inbox to confirm.";
+      form.reset();
+    } else if (res.status === 400 && body.error === "invalid_email") {
+      msg.className = "signup-msg error";
+      msg.textContent = "That doesn't look like a valid email.";
+    } else if (res.status === 429) {
+      msg.className = "signup-msg error";
+      msg.textContent = "Too many attempts. Try again in a minute.";
+    } else {
+      msg.className = "signup-msg error";
+      msg.textContent = "Something went wrong. Try again.";
+    }
+
+    btn.disabled = false;
+  });
+</script>
